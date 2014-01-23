@@ -41,18 +41,14 @@ class SiteController extends Controller {
         $vue->vue_all_plat($plats);
     }
     
-    public function addPanier($plat) {
+    public function addPanier($plat, $nb=1) {
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
             $_SESSION['panier']['plat'] = array();
             $_SESSION['panier']['nbre'] = array();
         }
-        if (isset($_SESSION['panier']['plat'][$plat->id])) {
-            $_SESSION['panier']['nbre'][$plat->id] += 1;
-        } else {
-            $_SESSION['panier']['plat'][$plat->id] = $plat;
-            $_SESSION['panier']['nbre'][$plat->id] = 1;
-        }
+        $_SESSION['panier']['plat'][$plat->id] = $plat;
+        $_SESSION['panier']['nbre'][$plat->id] = $nb;
     }
 
     public function getDetailPanier() {
