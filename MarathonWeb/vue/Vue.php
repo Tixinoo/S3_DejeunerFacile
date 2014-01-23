@@ -93,8 +93,14 @@ class Vue {
         $res = '<div id=panier><table><tr class="headerrow"><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
             $resto = Restaurant::findByNom($p['restaurant']);
-            $plat = Plat::findByResto($resto->id);
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td><td><a href="panier.php?a=suppPanier&idPlat='. $plat->id . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+            $tabplat = Plat::findByResto($resto->id);
+            $idplat = 0;
+            foreach($tabplat as $pl) {
+                if ($pl->nom == $p['plat'])
+                    $idplat = $pl->id;
+            }
+            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td><td><a href="panier.php?a=suppPanier&idPlat='.
+            $idplat . '">Supprimer parce que c\'est pas bon</a></td></tr>';
         }
         $res = $res . '</table></div><br/><a href="index.php">Retour à l\'accueil</a>';
         echo $res;
