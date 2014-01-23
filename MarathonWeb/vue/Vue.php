@@ -8,6 +8,14 @@ class Vue {
         $this->obj = $param;
     }
     
+    public function afficherplat() {
+        include 'html/header.html';
+        echo "<p><h1>" . $this->obj->nom . "</h1></p>";
+        
+        echo "<div class=\"dimage\"><img src=\"others/images/petites/" . $this->obj->photo . "\" alt=\"\" /></div>";
+        include 'html/footer.html';
+    }
+    
     public function vuedefault() {
         include 'html/header.html';
         include ('html/accueil.html');
@@ -76,7 +84,7 @@ class Vue {
         $panier = $this->obj;
         $res = '<div id=panier><table><tr><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td></tr>';
         foreach ($panier as $p) {
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td></tr>';
+            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td></tr>';
         }
         $res = $res . '</table></div>';
         echo $res;
