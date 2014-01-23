@@ -11,20 +11,20 @@ class SiteController extends Controller {
     }
     
     public function defaultAction() {
-        $theme = Theme::findAll();
-        $vue = new Vue($theme);
+        $themes = Theme::findAll();
+        $vue = new Vue($themes);
         $vue->vue_generale();
     }
 
-    public function listThemeAction($param) {
-        $theme = Theme::findAll();
-        $vue = new Vue($theme);
-        $vue->vue_generale();
+    public function listThemeAction() {
+        $themes = Theme::findAll();
+        $vue = new Vue($themes);
+        $vue->vue_all_theme();
     }
     
-    public function listRestoAction($param) {
-        $resto = Restaurant::findAll();
-        $vue = new Vue($resto);
-        $vue->vue_general('liste'); 
+    public function listRestoAction($idtheme) {
+        $restos = Restaurant::findByTheme($idtheme);
+        $vue = new Vue($restos);
+        $vue->vue_all_resto($restos); 
     }
 }
