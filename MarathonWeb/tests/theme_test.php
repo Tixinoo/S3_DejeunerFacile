@@ -2,16 +2,29 @@
 
 include_once ('../base/Theme.php');
 $t = new Theme();
-$t->nom = "nom";
-$t->description = "description";
-//var_dump($t);
-//$t->insert();
-//echo "".$t->id."";
+$t->nom = "nomtheme";
+$t->description = "descriptiontheme";
+
+$t->insert();
+echo $t->id;
+
 $liste = Theme::findAll();
-var_dump($liste);
 
 foreach ($liste as $key => $value)
 {
-    echo "coucou";
-    var_dump($value);
+    echo "" . $value->nom . " ; " . $value->description . "<br/>";
+}
+
+$tt = Theme::findById($t->id);
+$tt->description = "une autre description";
+var_dump($tt);
+
+$tt->delete();
+
+
+$liste2 = Theme::findAll();
+
+foreach ($liste2 as $key => $value)
+{
+    echo "" . $value->nom . " ; " . $value->description . "<br/>";
 }
