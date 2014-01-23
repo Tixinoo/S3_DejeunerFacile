@@ -16,7 +16,8 @@ class Vue {
         $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '" > ' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '" > ' . $this->obj->nom . '</a>';
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
-        echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li></ul></div></div>';
+        echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/originales/' . $this->obj->photo . '" alt="" class="imagelimitee" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li></ul></div></div>';
+        echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $this->obj->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         include 'html/footer.html';
     }
 
@@ -97,6 +98,8 @@ class Vue {
         $res = $res . "<h1 class=\"titretheme\"><a href=\"index.php?a=affPlat&idplat=$id\">" . $plat->nom . "</a></h1>";
 
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
+        $res = $res . '<a href="index.php?a=affPlat&idplat=' . $id . '"><img src="images/petites/' . $plat->photo . '" alt="image" class="petiteimage" /></a>';
+        $res = $res . '<p class="pprix">Prix : ' . $plat->prix . '€</p>';
         $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         $res = $res . "</div>";
         return $res;
