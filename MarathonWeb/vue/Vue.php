@@ -17,7 +17,7 @@ class Vue {
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
         echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/originales/' . $this->obj->photo . '" alt="" class="imagelimitee" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li><li>Prix : ' . $this->obj->prix . '</li></ul></div></div>';
-        echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $this->obj->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
+        echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $this->obj->id . '&qte=' . 1 . '">Ajouter (1x) au panier</a></p></br>';
         include 'html/footer.html';
     }
 
@@ -78,7 +78,7 @@ class Vue {
         $t = Theme::findById($r->id_theme);
 
         echo '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
-        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
 
         echo "<h2>Voici les plats correspondants au restaurant : " . $r->nom . "</h2>";
         //$nb = $this->obj->getSize();
@@ -100,7 +100,7 @@ class Vue {
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
         $res = $res . '<a href="index.php?a=affPlat&idplat=' . $id . '"><img src="images/petites/' . $plat->photo . '" alt="image" class="petiteimage" /></a>';
         $res = $res . '<p class="pprix">Prix : ' . $plat->prix . '€</p>';
-        $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
+        $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter (1x) au panier</a></p></br>';
         $res = $res . "</div>";
         return $res;
     }
@@ -121,7 +121,7 @@ class Vue {
                         $idplat = $pl->id;
                 }
                 $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'x</td><td>'. $p['pu'] .'€</td><td>'. $p['total'] .'€</td><td><a href="panier.php?a=suppPanier&idPlat='.
-                $idplat . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+                $idplat . '">Supprimer (1x) parce que c\'est pas bon</a></td></tr>';
                 $montant_total = $montant_total + $p['nbre'] * $p['total'];
             }
             $res = $res . '<tr><td colspan="5"><p align="right"><b>Montant Total</b></p></td><td colspan="2"><p align="left"><b>' . $montant_total . '€</b></p></td></tr>';
