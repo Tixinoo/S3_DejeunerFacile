@@ -168,5 +168,29 @@ class Plat {
 
         return $res;
     }
+    
+    public static function findByResto($idresto) {
+        $res = array();
+
+        $c = Base::getConnection();
+        $query = $c->prepare("select * from plats where id_resto= ?");
+        
+        $dbres = $query->execute(array($idresto));
+
+        while ($d = $query->fetch(PDO::FETCH_BOTH)) {
+            $p = new Plat();
+
+            $p->id = $d['id'];
+            $p->nom = $d['nom'];
+            $p->description = $d['description'];
+            $p->prix = $d['prix'];
+            $p->photo = $d['photo'];
+            $p->id_resto = $d['id_resto'];
+
+            $res[] = $p;
+        }
+
+        return $res;
+    }
 
 }
