@@ -131,21 +131,116 @@ class Restaurant
     
     public function findByNom()
     {
-        
+        try
+        {
+            $db = Base::getConnection();
+            $query = "SELECT * FROM Restaurant WHERE nom = ?";
+            $statement = $db->prepare($query);
+            $statement->bindParam(1,$this->nom);
+            $dbres = $statement->execute();
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $r = new Restaurant();
+            $r->id = $row['id'];
+            $r->nom = $row['nom'];
+            $r->description = $row['description'];
+            $r->adresse = $row['adresse'];
+            $r->contact = $row['contact'];
+            $r->id_theme = $row['id_theme'];
+            return $r;
+        }
+        catch (PDOException $pdoe)
+        {
+            $trace = $pdoe->getTrace();
+            echo "Erreur PDO : $trace";
+        }
     }
     
     public function findByAdresse()
     {
-        
+        try
+        {
+            $db = Base::getConnection();
+            $query = "SELECT * FROM Restaurant WHERE adresse = ?";
+            $statement = $db->prepare($query);
+            $statement->bindParam(1,$this->adresse);
+            $dbres = $statement->execute();
+            $tab = array();
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+            $r = new Restaurant();
+            $r->id = $row['id'];
+            $r->nom = $row['nom'];
+            $r->description = $row['description'];
+            $r->adresse = $row['adresse'];
+            $r->contact = $row['contact'];
+            $r->id_theme = $row['id_theme'];
+            $tab[] = $r;
+            }
+            return $tab;
+        }
+        catch (PDOException $pdoe)
+        {
+            $trace = $pdoe->getTrace();
+            echo "Erreur PDO : $trace";
+        }
     }
     
-    public function findByIdTheme()
+    public function findByTheme()
     {
-        
+        try
+        {
+            $db = Base::getConnection();
+            $query = "SELECT * FROM Restaurant WHERE id_theme = ?";
+            $statement = $db->prepare($query);
+            $statement->bindParam(1,$this->id_theme);
+            $dbres = $statement->execute();
+            $tab = array();
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+            $r = new Restaurant();
+            $r->id = $row['id'];
+            $r->nom = $row['nom'];
+            $r->description = $row['description'];
+            $r->adresse = $row['adresse'];
+            $r->contact = $row['contact'];
+            $r->id_theme = $row['id_theme'];
+            $tab[] = $r;
+            }
+            return $tab;
+        }
+        catch (PDOException $pdoe)
+        {
+            $trace = $pdoe->getTrace();
+            echo "Erreur PDO : $trace";
+        }
     }
     
     public function findAll()
     {
-        
+        try 
+        {
+            $db = Base::getConnection();
+            $query = "SELECT * FROM Restaurant";
+            $statement = $db->prepare($query);
+            $dbres = $statement->execute();
+            $tab = array();
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+            $r = new Restaurant();
+            $r->id = $row['id'];
+            $r->nom = $row['nom'];
+            $r->description = $row['description'];
+            $r->adresse = $row['adresse'];
+            $r->contact = $row['contact'];
+            $r->id_theme = $row['id_theme'];
+            $tab[] = $r;
+            }
+            return $tab;
+        }
+        catch (PDOException $pdoe)
+        {
+            $trace = $pdoe->getTrace();
+            echo "Erreur PDO : $trace";
+        }
     }
 }
