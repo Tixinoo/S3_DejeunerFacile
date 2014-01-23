@@ -1,1 +1,15 @@
-//blabla
+
+body {
+    width: 80%;
+    margin: auto;
+}
+
+.contenu {
+    background-color: #ff9999;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding-left: 5%;
+    box-shadow: aqua 5px 5px 4px;
+}
