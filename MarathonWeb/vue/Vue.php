@@ -11,6 +11,7 @@ class Vue {
     public function vue_all_theme() {
         include 'html/header.html';
         foreach($this->obj as $t) {
+            echo "Bli";
             vue_theme($t);
         }
         include 'html/footer.html';
@@ -42,4 +43,20 @@ class Vue {
         return $res;  
     }
     
+    public function vue_all_plat() {
+        include 'html/header.html';
+        foreach($this->obj as $p) {
+            vue_plat($p);
+        }
+        include 'html/footer.html';
+    }
+    
+    public function vue_plat($plat) {
+        $res = "<div id=\"contenu\">\n";
+        $res = $res . "<h1>" . $plat->id . " : " . $plat->nom . "</h1>";
+
+        $res = $res . "<p id=catdescription>" . $plat->description . "</p>";
+        $res = $res . "</div>";
+        return $res;  
+    }
 }
