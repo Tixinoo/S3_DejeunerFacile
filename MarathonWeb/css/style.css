@@ -73,6 +73,12 @@ body {
     padding: 0;
     display: inline-block;
     background-color: aliceblue;
+    text-align: center;
+}
+
+.headerrow
+{
+    font-weight: bold;
 }
 
 table tr,th,td
@@ -88,5 +94,6 @@ table tr,th,td
 table
 {
     border-collapse: collapse;
+    display: inline-block;
 }
 
