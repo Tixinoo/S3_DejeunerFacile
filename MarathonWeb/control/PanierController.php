@@ -29,18 +29,14 @@ class PanierController extends Controller {
         $res = NULL;
         if (isset($_SESSION['panier'])) {
             $res = array();
-            foreach($_SESSION['panier'] as $idplat => $ligne)
-            {
-                foreach ($_SESSION['panier'][$idplat]['plat'] as $plat) {
-                    $res[$idplat] = array();
-                    $res[$idplat]['type'] = Theme::findById(Restaurant::findById($plat->id_resto)->id_theme)->nom;
-                    $res[$idplat]['restaurant'] = Restaurant::findById($plat->id_resto)->nom;
-                    $res[$idplat]['plat'] = $plat->nom;
-                    $res[$idplat]['nbre'] = $_SESSION['panier'][$plat->id]['nbre'];
-                    $res[$idplat]['pu'] = $plat->prix;
-                    $res[$idplat]['total'] = $plat->prix * $_SESSION['panier'][$plat->id]['nbre'];
-                    var_dump($res);
-                }
+            foreach ($_SESSION['panier'] as $idplat => $ligne) {
+                $res[$idplat] = array();
+                $res[$idplat]['type'] = Theme::findById(Restaurant::findById($ligne['plat']->id_resto)->id_theme)->nom;
+                $res[$idplat]['restaurant'] = Restaurant::findById($ligne['plat']->id_resto)->nom;
+                $res[$idplat]['plat'] = $ligne['plat']->nom;
+                $res[$idplat]['nbre'] = $_SESSION['panier'][$idplat]['nbre'];
+                $res[$idplat]['pu'] = $ligne['plat']->prix;
+                $res[$idplat]['total'] = $ligne['plat']->prix * $_SESSION['panier'][$idplat]['nbre'];
             }
         }
         $vue = new Vue($res);
