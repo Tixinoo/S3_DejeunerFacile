@@ -12,7 +12,8 @@ class Vue {
         include 'html/header.html';
         $r = Restaurant::findById($this->obj->id_resto);
         $t = Theme::findById($r->id_theme);
-        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';         
+        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';   
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
         echo '<div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
@@ -21,6 +22,7 @@ class Vue {
 
     public function vuedefault() {
         include 'html/header.html';
+        $_SESSION['arianne'] = '<br/>';
         include ('html/accueil.html');
         foreach ($this->obj as $t) {
             echo $this->vue_theme($t);
@@ -30,6 +32,7 @@ class Vue {
 
     public function vue_all_theme() {
         include 'html/header.html';
+        $_SESSION['arianne'] = '<br/>';
         foreach ($this->obj as $t) {
             echo $this->vue_theme($t);
         }
@@ -50,6 +53,7 @@ class Vue {
         include 'html/header.html';
         $t = Theme::findById($idtheme);
         echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a><br/>';
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a><br/>';
         foreach ($this->obj as $r) {
             echo $this->vue_resto($r);
         }
@@ -72,6 +76,7 @@ class Vue {
         $t = Theme::findById($r->id_theme);
 
         echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
 
         foreach ($this->obj as $p) {
             echo $this->vue_plat($p);
@@ -92,6 +97,7 @@ class Vue {
 
     public function vue_panier() {
         include 'html/header.html';
+        if(isset($_SESSION['arianne'])) echo $_SESSION['arianne'];
         $panier = $this->obj;
         $res = '<div id=panier><table><tr class="headerrow"><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
