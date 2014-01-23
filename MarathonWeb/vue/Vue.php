@@ -49,7 +49,7 @@ class Vue {
         $plat = $this->obj;
         foreach($this->obj as $p) {
             echo $this->vue_plat($p);
-            echo '<a href="panier.php?a=addPanier&idPlat=' . $p->id . '&qte=' . 1 . '">Ajouter au panier</a></br>';
+            echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $p->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         }
         include 'html/footer.html';
     }
