@@ -2,7 +2,7 @@
 
 class Panier {
     
-    public function addPanier($plat, $nb=1) {
+    public static function addPanier($plat, $nb=1) {
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
             $_SESSION['panier']['plat'] = array();
@@ -12,7 +12,7 @@ class Panier {
         $_SESSION['panier']['nbre'][$plat->id] = $nb;
     }
 
-    public function getDetailPanier() {
+    public static function getDetailPanier() {
         $res = NULL;
         if (isset($_SESSION['panier'])) {
             $res = array();
@@ -34,7 +34,7 @@ class Panier {
         return $res;
     }
 
-    public function resetPanier() {
+    public static function resetPanier() {
         session_destroy();
         session_start();
     }
