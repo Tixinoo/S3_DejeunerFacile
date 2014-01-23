@@ -102,10 +102,11 @@ class Vue {
     }
 
     public function vue_panier() {
+        $montant_total = 0;
         include 'html/header.html';
         if(isset($_SESSION['arianne'])) echo $_SESSION['arianne'];
         $panier = $this->obj;
-        $res = '<div id=panier><table><tr class="headerrow"><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
+        $res = '<div id=panier><table><tr class="headerrow"><td>Thème</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
             $resto = Restaurant::findByNom($p['restaurant']);
             $tabplat = Plat::findByResto($resto->id);
@@ -114,9 +115,11 @@ class Vue {
                 if ($pl->nom == $p['plat'])
                     $idplat = $pl->id;
             }
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td><td><a href="panier.php?a=suppPanier&idPlat='.
+            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'x</td><td>'. $p['pu'] .'€</td><td>'. $p['total'] .'€</td><td><a href="panier.php?a=suppPanier&idPlat='.
             $idplat . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+            $montant_total = $montant_total + $p['nbre'] * $p['total'];
         }
+        $res = $res . '<tr><td colspan="5"><p align="right"><b>Montant Total</b></p></td><td colspan="2"><p align="left"><b>' . $montant_total . '€</b></p></td></tr>';
         $res = $res . '</table></div><br/><a href="index.php">Retour à l\'accueil</a>';
         echo $res;
         include 'html/footer.html';
