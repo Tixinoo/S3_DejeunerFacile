@@ -161,22 +161,3 @@ ALTER TABLE `plats`
 --
 ALTER TABLE `restaurant`
   ADD CONSTRAINT `resto_theme` FOREIGN KEY (`id_theme`) REFERENCES `theme` (`id`);
-
---
--- Table structure for table `utilisateur`
---
-
-CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `panier`
---
-
-CREATE TABLE `panier` (
-  `idu` int(11) NOT NULL,
-  `idp` int(11) NOT NULL,
-  PRIMARY KEY (`idu`, `idp`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
