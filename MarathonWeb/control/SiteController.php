@@ -13,8 +13,19 @@ class SiteController extends Controller {
             'listTheme' => 'listThemeAction',
             'listResto' => 'listRestoAction',
             'listPlat' => 'listPlatAction',
+            'affPlat' => 'afficherPlat',
             'default' => 'defaultAction'
         );
+    }
+    
+    public function afficherPlat($get) {
+        if(isset($get['idplat'])) {
+            $plat = Plat::findById($get['idplat']);
+            $vue = new Vue($plat);
+            $vue->afficherplat();
+        } else {
+            $this->defaultAction();
+        }
     }
 
     public function defaultAction() {

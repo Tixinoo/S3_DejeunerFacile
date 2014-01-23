@@ -21,6 +21,10 @@ body {
     margin-left: 15%;
 }
 
+.dimage , .ptitre{
+    width: 500px;
+    margin: auto;
+}
 .contenu {
     display: inline-block;
     vertical-align: top;

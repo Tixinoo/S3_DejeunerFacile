@@ -8,6 +8,14 @@ class Vue {
         $this->obj = $param;
     }
     
+    public function afficherplat() {
+        include 'html/header.html';
+        echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
+        
+        echo '<div class="dimage"><figure><a href="others/images/originales/' . $this->obj->photo . '" target="_blank"><img src="others/images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="others/images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
+        include 'html/footer.html';
+    }
+    
     public function vuedefault() {
         include 'html/header.html';
         include ('html/accueil.html');
@@ -64,7 +72,8 @@ class Vue {
     
     public function vue_plat($plat) {
         $res = "<div class=\"contenu\">\n";
-        $res = $res . "<h1>" . $plat->nom . "</h1>";
+        $id = $plat->id;
+        $res = $res . "<h1><a href=\"index.php?a=affPlat&idplat=$id\">" . $plat->nom . "</a></h1>";
 
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
         $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
@@ -76,7 +85,7 @@ class Vue {
         $panier = $this->obj;
         $res = '<div id=panier><table><tr><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td></tr>';
         foreach ($panier as $p) {
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td></tr>';
+            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td></tr>';
         }
         $res = $res . '</table></div>';
         echo $res;
