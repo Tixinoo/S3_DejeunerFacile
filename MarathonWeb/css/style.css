@@ -98,3 +98,12 @@ table
     background-color: aliceblue;
 }
 
+#titre h1
+{
+    text-align: center;
+}
+
+#titre h3
+{
+    text-align: right;
+}
