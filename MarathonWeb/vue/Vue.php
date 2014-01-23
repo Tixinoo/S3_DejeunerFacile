@@ -8,10 +8,9 @@ class Vue {
         $this->obj = $param;
     }
 
-    public function vue_general($param) {
+    public function vue_all_theme() {
         include 'html/header.html';
-        $all_themes = Theme::findAll();
-        foreach($all_themes as $t) {
+        foreach($this->obj as $t) {
             vue_theme($t);
         }
         include 'html/footer.html';
@@ -24,6 +23,23 @@ class Vue {
         $res = $res . "<p id=catdescription>" . $theme->description . "</p>";
         $res = $res . "</div>";
         return $res;
+    }
+    
+    public function vue_all_resto() {
+        include 'html/header.html';
+        foreach($this->obj as $r) {
+            vue_resto($r);
+        }
+        include 'html/footer.html';
+    }
+    
+    public function vue_resto($resto) {
+        $res = "<div id=\"contenu\">\n";
+        $res = $res . "<h1>" . $resto->id . " : " . $resto->nom . "</h1>";
+
+        $res = $res . "<p id=catdescription>" . $theme->description . "</p>";
+        $res = $res . "</div>";
+        return $res;  
     }
     
 }
