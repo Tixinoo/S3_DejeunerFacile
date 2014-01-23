@@ -41,6 +41,7 @@ class SiteController extends Controller {
     }
 
     public function listRestoAction($get) {
+        $idtheme = 0;
         if (isset($get['idtheme'])) {
             $idtheme = $get['idtheme'];
             $restos = Restaurant::findByTheme($idtheme);
@@ -48,7 +49,7 @@ class SiteController extends Controller {
             $restos = Restaurant::findAll();
         }
         $vue = new Vue($restos);
-        $vue->vue_all_resto($restos);
+        $vue->vue_all_resto($idtheme);
     }
 
     public function listPlatAction($get) {
