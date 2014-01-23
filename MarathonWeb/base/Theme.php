@@ -164,5 +164,6 @@ class Theme
     
     public function getUrl() {
         $res = "index.php?a=listResto&idtheme=" . $this->id;
+        return $res;
     }
 }

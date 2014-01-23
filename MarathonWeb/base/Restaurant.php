@@ -243,8 +243,9 @@ class Restaurant
         }
     }
     
-    public static function getUrl() {
-        
+    public function getUrl() {
+        $res = "index.php?a=listPlat&idresto=" . $this->id;
+        return $res;
     }
 
 }
