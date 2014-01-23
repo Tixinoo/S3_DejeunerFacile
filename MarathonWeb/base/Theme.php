@@ -161,4 +161,8 @@ class Theme
             echo "Erreur PDO : $trace";
         }
     }
+    
+    public static function getUrl() {
+        $res = "index.php?a=listResto&idtheme=" . $this->id;
+    }
 }
