@@ -168,7 +168,7 @@ ALTER TABLE `restaurant`
 
 CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`email`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
