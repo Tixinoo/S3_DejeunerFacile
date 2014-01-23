@@ -1,6 +1,6 @@
 <?php
 
-include ('../base/Theme.php');
+include_once ('../base/Theme.php');
 $t = new Theme();
 $t->nom = "nom";
 $t->description = "description";
