@@ -19,7 +19,7 @@ class Vue {
     public function vue_theme($theme) {
         $res = "<div id=\"contenu\">\n";
         $id = $theme->id;
-        $res = $res . "<h1><a href=\"index.php?a=listResto&id=$id\">" . $id . " : " . $theme->nom . "</a></h1>";
+        $res = $res . "<h1><a href=\"index.php?a=listResto&idtheme=$id\">" . $id . " : " . $theme->nom . "</a></h1>";
 
         $res = $res . "<p id=catdescription>" . $theme->description . "</p>";
         $res = $res . "</div>";
@@ -36,7 +36,8 @@ class Vue {
     
     public function vue_resto($resto) {
         $res = "<div id=\"contenu\">\n";
-        $res = $res . "<h1>" . $resto->id . " : " . $resto->nom . "</h1>";
+        $id = $resto->id;
+        $res = $res . "<h1><a href=\"index.php?a=listPlat&idresto=$id\">" . $id . " : " . $resto->nom . "</a></h1>";
 
         $res = $res . "<p id=catdescription>" . $resto->description . "</p>";
         $res = $res . "</div>";
