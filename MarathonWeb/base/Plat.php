@@ -194,7 +194,7 @@ class Plat {
     }
     
     public static function getUrl() {
-        $res = "index.php?a=listResto&idtheme=" . $this->id;
+        $res = "index.php?a=affPlat&idplat=" . $this->id;
     }
 
 }
