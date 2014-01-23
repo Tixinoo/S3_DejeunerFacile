@@ -19,7 +19,7 @@ class Vue {
     public function vue_theme($theme) {
         $res = "<div class=\"contenu\">\n";
         $id = $theme->id;
-        $res = $res . "<h1><a href=\"index.php?a=listResto&idtheme=$id\">" . $id . " : " . $theme->nom . "</a></h1>";
+        $res = $res . "<h1><a href=\"index.php?a=listResto&idtheme=$id\">" . $theme->nom . "</a></h1>";
 
         $res = $res . "<p class=catdescription>" . $theme->description . "</p>";
         $res = $res . "</div>";
@@ -37,7 +37,7 @@ class Vue {
     public function vue_resto($resto) {
         $res = "<div class=\"contenu\">\n";
         $id = $resto->id;
-        $res = $res . "<h1><a href=\"index.php?a=listPlat&idresto=$id\">" . $id . " : " . $resto->nom . "</a></h1>";
+        $res = $res . "<h1><a href=\"index.php?a=listPlat&idresto=$id\">" . $resto->nom . "</a></h1>";
 
         $res = $res . "<p class=catdescription>" . $resto->description . "</p>";
         $res = $res . "</div>";
@@ -55,7 +55,7 @@ class Vue {
     
     public function vue_plat($plat) {
         $res = "<div class=\"contenu\">\n";
-        $res = $res . "<h1>" . $plat->id . " : " . $plat->nom . "</h1>";
+        $res = $res . "<h1>" . $plat->nom . "</h1>";
 
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
         $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
