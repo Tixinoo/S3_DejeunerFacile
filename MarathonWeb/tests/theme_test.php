@@ -9,12 +9,7 @@ $t->insert();
 echo "".$t->id."";
 $liste = Theme::findAll();
 
-/*
 foreach ($liste as $key => $value)
 {
     var_dump($value);
 }
-*/
-/*
-$tt = Theme::findById(1);
-*/
