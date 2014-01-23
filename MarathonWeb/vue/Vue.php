@@ -82,6 +82,7 @@ class Vue {
     }
     
     public function vue_panier() {
+        include 'html/header.html';
         $panier = $this->obj;
         $res = '<div id=panier><table><tr><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td></tr>';
         foreach ($panier as $p) {
@@ -89,5 +90,6 @@ class Vue {
         }
         $res = $res . '</table></div>';
         echo $res;
+        include 'html/footer.html';
     }
 }
