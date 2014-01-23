@@ -1,6 +1,6 @@
 <?php
 
-include ('../Restaurant.php');
+include_once ('../Restaurant.php');
 $r = new Theme();
 $r->nom = "nom";
 $r->description = "description";
