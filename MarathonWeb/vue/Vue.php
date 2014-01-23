@@ -80,6 +80,10 @@ class Vue {
         $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
 
         echo "<h2>Voici les plats correspondants au restaurant : " . $r->nom . "</h2>";
+        //$nb = $this->obj->getSize();
+        $nb = 0;
+        $nb = sizeof($this->obj);
+        echo "<h3>- Ce restaurant possède $nb plats à la carte ! Voici la liste : </h3>";
         foreach ($this->obj as $p) {
             echo $this->vue_plat($p);
         }
