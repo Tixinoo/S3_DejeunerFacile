@@ -12,7 +12,7 @@ class Vue {
         include 'html/header.html';
         $r = Restaurant::findById($this->obj->id_resto);
         $t = Theme::findById($r->id_theme);
-        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a> >';         
+        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';         
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
         echo '<div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
