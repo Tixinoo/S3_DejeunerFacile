@@ -65,3 +65,18 @@ body {
     color: green;
 }
 
+table tr,th,td
+{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 1em;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
