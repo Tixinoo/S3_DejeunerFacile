@@ -193,8 +193,9 @@ class Plat {
         return $res;
     }
     
-    public static function getUrl() {
+    public function getUrl() {
         $res = "index.php?a=affPlat&idplat=" . $this->id;
+        return $res;
     }
 
 }
