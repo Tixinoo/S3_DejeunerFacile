@@ -1,5 +1,7 @@
 <?php
 
+include_once '../base/Plat.php';
+
 class PanierController extends Controller {
     
     public function __construct() {
@@ -10,13 +12,13 @@ class PanierController extends Controller {
         );
     }
     
-    public function addPanier($plat, $nb=1) {
+    public function addPanier($get) {
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
             $_SESSION['panier'][$plat->id] = array();
         }
-        $_SESSION['panier'][$plat->id]['plat'] = $plat;
-        $_SESSION['panier'][$plat->id]['nbre'] = $nb;
+        $_SESSION['panier'][$plat->id]['plat'] = Plat::findById($get['idPlat']);
+        $_SESSION['panier'][$plat->id]['nbre'] = $get['qte'];
     }
 
     public function getPanier() {
