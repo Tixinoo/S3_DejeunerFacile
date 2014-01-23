@@ -49,7 +49,6 @@ class Vue {
         $plat = $this->obj;
         foreach($this->obj as $p) {
             echo $this->vue_plat($p);
-            echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $p->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         }
         include 'html/footer.html';
     }
@@ -59,6 +58,7 @@ class Vue {
         $res = $res . "<h1>" . $plat->id . " : " . $plat->nom . "</h1>";
 
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
+        $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         $res = $res . "</div>";
         return $res;  
     }
