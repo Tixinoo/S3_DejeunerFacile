@@ -12,8 +12,8 @@ class Vue {
         include 'html/header.html';
         $r = Restaurant::findById($this->obj->id_resto);
         $t = Theme::findById($r->id_theme);
-        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';   
-        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '">' . $this->obj->nom . '</a>';
+        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '" > ' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '" > ' . $this->obj->nom . '</a>';   
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '" > ' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '" > ' . $this->obj->nom . '</a>';
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
         echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li></ul></div></div>';
@@ -54,7 +54,7 @@ class Vue {
         $t = Theme::findById($idtheme);
         echo '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a><br/>';
         echo "<h2>Voici les restaurants correspondants au thème : " . $t->nom . "</h2>";
-        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a><br/>';
+        $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a><br/>';
         foreach ($this->obj as $r) {
             echo $this->vue_resto($r);
         }
@@ -76,7 +76,7 @@ class Vue {
         $r = Restaurant::findById($idresto);
         $t = Theme::findById($r->id_theme);
 
-        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
+        echo '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
         $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
 
         echo "<h2>Voici les plats correspondants au restaurant : " . $r->nom . "</h2>";
