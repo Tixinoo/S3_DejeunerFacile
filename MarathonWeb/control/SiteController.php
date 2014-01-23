@@ -20,7 +20,7 @@ class SiteController extends Controller {
     public function defaultAction() {
         $themes = Theme::findAll();
         $vue = new Vue($themes);
-        $vue->vue_all_theme();
+        $vue->vuedefault();
     }
 
     public function listThemeAction() {
