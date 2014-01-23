@@ -23,7 +23,10 @@ class PanierController extends Controller {
             $_SESSION['panier'][$get['idPlat']] = array();
         }
         $_SESSION['panier'][$get['idPlat']]['plat'] = Plat::findById($get['idPlat']);
-        $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
+        if (!isset($_SESSION['panier'][$get['idPlat']]['nbre']))
+                $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
+        else
+                $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] + $get['qte'];
     }
 
     public function getPanierAction() {
