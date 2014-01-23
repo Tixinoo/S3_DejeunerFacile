@@ -11,7 +11,9 @@ class SiteController extends Controller {
     }
     
     public function defaultAction() {
-        echo "A voir";
+        $theme = Theme::findAll();
+        $vue = new Vue($theme);
+        $vue->vue_general('liste');
     }
 
     public function listThemeAction($param) {
