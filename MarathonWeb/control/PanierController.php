@@ -56,6 +56,18 @@ class PanierController extends Controller {
 
     public function suppPanierAction($get) {
         if (isset($_SESSION['panier'][$get['idPlat']])) {
+            $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] - 1;
+            include ('html/header.html');
+            echo "<div id=\"divaff\"><p id=\"paff\"> " . htmlspecialchars("Plat ajouté au panier avec succès !") . "<br/><br/>";
+            echo "Redirection dans 3 secondes, <br/><a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
+            echo "</p></div>";
+            header('Refresh: 3; url=panier.php?a=getPanier');
+            include ('html/footer.html');
+        }
+        if ($_SESSION['panier'][$get['idPlat']]['nbre'] == 0)
+            unset($_SESSION['panier'][$get['idPlat']]);
+        /*
+        if (isset($_SESSION['panier'][$get['idPlat']])) {
             unset($_SESSION['panier'][$get['idPlat']]);
 
             include ('html/header.html');
@@ -64,7 +76,7 @@ class PanierController extends Controller {
             echo "</p></div>";
             header('Refresh: 3; url=panier.php?a=getPanier');
             include ('html/footer.html');
-        }
+        }*/
     }
 
     public function resetPanierAction() {
