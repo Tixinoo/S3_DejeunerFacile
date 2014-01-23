@@ -1,7 +1,5 @@
 <?php
 
-include_once 'base/Vue.php';
-
 class Vue {
 
     private $obj;
@@ -20,7 +18,8 @@ class Vue {
     
     public function vue_theme($theme) {
         $res = "<div id=\"contenu\">\n";
-        $res = $res . "<h1>" . $theme->id . " : " . $theme->nom . "</h1>";
+        $id = $theme->id;
+        $res = $res . "<h1><a href=\"index.php?a=listResto&id=$id\">" . $id . " : " . $theme->nom . "</a></h1>";
 
         $res = $res . "<p id=catdescription>" . $theme->description . "</p>";
         $res = $res . "</div>";
