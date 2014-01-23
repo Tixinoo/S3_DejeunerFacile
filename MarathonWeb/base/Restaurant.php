@@ -93,7 +93,6 @@ class Restaurant
                 $statement->bindParam(1,$this->id);
                 $nbl = $statement->execute();
                 return $nbl;
-                
             }
             catch (Exception $e)
             {
