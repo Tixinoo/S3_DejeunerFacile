@@ -4,6 +4,7 @@ include_once 'Controller.php';
 include_once 'base/Theme.php';
 include_once 'vue/Vue.php';
 include_once 'base/Restaurant.php';
+include_once 'base/Plat.php';
 
 class SiteController extends Controller {
 
@@ -11,6 +12,7 @@ class SiteController extends Controller {
         $this->tab_action = array(
                     'listTheme'=>'listThemeAction',
                     'listResto'=>'listRestoAction',
+                    'listPlat' =>'listPlatAction',
                     'default'=>'defaultAction'
                     );
     }
