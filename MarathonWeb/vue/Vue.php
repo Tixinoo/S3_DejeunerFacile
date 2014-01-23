@@ -46,8 +46,10 @@ class Vue {
     
     public function vue_all_plat() {
         include 'html/header.html';
+        $plat = $this->obj;
         foreach($this->obj as $p) {
             echo $this->vue_plat($p);
+            echo '<a href="panier.php?a=addPanier&idPlat=' . $p->id . '></a></br>';
         }
         include 'html/footer.html';
     }
