@@ -162,7 +162,7 @@ class Theme
         }
     }
     
-    public static function getUrl() {
+    public function getUrl() {
         $res = "index.php?a=listResto&idtheme=" . $this->id;
     }
 }
