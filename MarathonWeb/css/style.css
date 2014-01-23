@@ -13,15 +13,34 @@ body {
     -moz-box-sizing: border-box;
     width: 45%;
     
-    background-color: #ff9999;
+    background-color: #99ff99;
     border: 1px solid black;
     margin-top: 20px;
     border-radius: 10px;
     padding-left: 5%;
+    padding-right: 3%;
     margin-left: 5%;
-    box-shadow: aqua 5px 5px 4px;
+    box-shadow: #ffcc99 5px 5px 4px;
+}
+
+.catdescription {
+    text-align: center;
 }
 
 .lienpanier {
     text-align: right;
 }
+
+.lienpanier a {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: red;
+    color: white;
+}
+
+.lienpanier a:hover {
+    font-weight: bold;
+    background-color: white;
+    color: green;
+}
+
