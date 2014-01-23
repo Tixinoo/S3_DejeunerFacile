@@ -11,8 +11,7 @@ class Vue {
     public function vue_all_theme() {
         include 'html/header.html';
         foreach($this->obj as $t) {
-            echo "Bli";
-            vue_theme($t);
+            echo $this->vue_theme($t);
         }
         include 'html/footer.html';
     }
