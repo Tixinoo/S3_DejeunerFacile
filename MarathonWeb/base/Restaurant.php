@@ -103,14 +103,14 @@ class Restaurant
         }
     }
     
-    public function findById()
+    public static function findById($id)
     {
         try
         {
             $db = Base::getConnection();
             $query = "SELECT * FROM Restaurant WHERE id = ?";
             $statement = $db->prepare($query);
-            $statement->bindParam(1,$this->id);
+            $statement->bindParam(1,$id);
             $dbres = $statement->execute();
             $row = $statement->fetch(PDO::FETCH_ASSOC);
             $r = new Restaurant();
@@ -129,14 +129,14 @@ class Restaurant
         }
     }
     
-    public function findByNom()
+    public static function findByNom($nom)
     {
         try
         {
             $db = Base::getConnection();
             $query = "SELECT * FROM Restaurant WHERE nom = ?";
             $statement = $db->prepare($query);
-            $statement->bindParam(1,$this->nom);
+            $statement->bindParam(1,$nom);
             $dbres = $statement->execute();
             $row = $statement->fetch(PDO::FETCH_ASSOC);
             $r = new Restaurant();
@@ -155,14 +155,14 @@ class Restaurant
         }
     }
     
-    public function findByAdresse()
+    public static function findByAdresse($adresse)
     {
         try
         {
             $db = Base::getConnection();
             $query = "SELECT * FROM Restaurant WHERE adresse = ?";
             $statement = $db->prepare($query);
-            $statement->bindParam(1,$this->adresse);
+            $statement->bindParam(1,$adresse);
             $dbres = $statement->execute();
             $tab = array();
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
@@ -185,14 +185,14 @@ class Restaurant
         }
     }
     
-    public function findByTheme()
+    public static function findByTheme($id_theme)
     {
         try
         {
             $db = Base::getConnection();
             $query = "SELECT * FROM Restaurant WHERE id_theme = ?";
             $statement = $db->prepare($query);
-            $statement->bindParam(1,$this->id_theme);
+            $statement->bindParam(1,$id_theme);
             $dbres = $statement->execute();
             $tab = array();
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
@@ -215,7 +215,7 @@ class Restaurant
         }
     }
     
-    public function findAll()
+    public static function findAll()
     {
         try 
         {
