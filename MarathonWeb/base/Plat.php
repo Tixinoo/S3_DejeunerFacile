@@ -62,7 +62,7 @@ class Plat {
 
         return $query->execute();
     }
-    
+
     /**
      *   Suppression dans la base
      *
@@ -85,7 +85,7 @@ class Plat {
 
         return $query->execute();
     }
-    
+
     /**
      * Ajoute un plat dans la base
      */
@@ -93,21 +93,26 @@ class Plat {
 
         $c = Base::getConnection();
 
+        try {
+            
+            $query = $c->prepare('INSERT INTO plats(nom, description, prix, photo, id_resto) VALUES (?, ?, ?, ?, ?)');
+            
+            echo "avant exe";
+            $res = $query->execute(array($this->nom, $this->description, $this->prix, $this->photo, $this->id_resto));
+            var_dump($res);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
 
-        $query = $c->prepare("INSERT INTO plats (nom, description, prix, photo, id_resto) VALUES ( :titre, :desc, :prix, :photo, :id_resto)");
-        $query->bindParam(':titre', $this->nom, PDO::PARAM_STR);
-        $query->bindParam(':desc', $this->description, PDO::PARAM_STR);
-        $query->bindParam(':prix', $this->prix, PDO::PARAM_STR);
-        $query->bindParam(':photo', $this->photo, PDO::PARAM_STR);
-        $query->bindParam(':id_resto', $this->id_resto, PDO::PARAM_STR);
 
-        $query->execute();
+
+
         //Il faut récupérer l'ID et le mettre dans l'objet
-
+        echo "last id : " . $c->lastInsertId();
         $this->id = $c->lastInsertId();
     }
-	
-	public static function findById($id) {
+
+    public static function findById($id) {
 
         $c = Base::getConnection();
         $query = $c->prepare("select * from plats where id=?");
@@ -120,13 +125,13 @@ class Plat {
         $p = new Plat();
 
         $p->id = $d['id'];
-        $p->nom = $d['titre'];
+        $p->nom = $d['nom'];
         $p->description = $d['description'];
-		$p->prix = $d['titre'];
-		$p->photo = $d['titre'];
-		$p->id_resto = $d['titre'];
+        $p->prix = $d['prix'];
+        $p->photo = $d['photo'];
+        $p->id_resto = $d['id_resto'];
 
-        return $categorie;
+        return $p;
     }
 
     /**
@@ -144,17 +149,21 @@ class Plat {
         $res = array();
 
         $c = Base::getConnection();
-        $query = $c->prepare("select * from categorie");
+        $query = $c->prepare("select * from plats");
         $dbres = $query->execute();
 
         while ($d = $query->fetch(PDO::FETCH_BOTH)) {
-            $categorie = new Categorie();
+            $p = new Plat();
 
-            $categorie->id = $d['id'];
-            $categorie->titre = $d['titre'];
-            $categorie->description = $d['description'];
+            $p->id = $d['id'];
+            $p->nom = $d['nom'];
+            $p->description = $d['description'];
+            $p->prix = $d['prix'];
+            $p->photo = $d['photo'];
+            $p->id_resto = $d['id_resto'];
 
-            $res[] = $categorie;
+
+            $res[] = $p;
         }
 
         return $res;
