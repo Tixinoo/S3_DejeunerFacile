@@ -5,12 +5,20 @@ body {
 }
 
 .contenu {
+    display: inline-block;
+    vertical-align: top;
+    
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 45%;
+    
     background-color: #ff9999;
     border: 1px solid black;
     margin-top: 20px;
-    margin-bottom: 20px;
     border-radius: 10px;
     padding-left: 5%;
+    margin-left: 5%;
     box-shadow: aqua 5px 5px 4px;
 }
 
