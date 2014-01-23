@@ -16,7 +16,17 @@
             <a href="index.php"><h1>Déjeuner Facile !</h1></a>
             <h3>Un projet W.I.C.  "Web Is Coming"</h3>
         </div>
-        <p id="lienpanier"><a href="panier.php?a=getPanier">Mon Panier à moi et rien qu'à moi !</a></p>
+        <p id="lienpanier"><a href="panier.php?a=getPanier">Mon Panier à moi et rien qu'à moi !</a>
+        <?php
+        $res = "(";
+        if (!isset($_SESSION['total']))
+            $res = $res . 0;
+        else {
+            $res = $res . $_SESSION['total'];
+        }
+        $res = $res . "€)</p>";
+        echo $res;
+        ?>
         <hr>
         
          <a href="index.php">Accueil</a> >

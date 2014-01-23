@@ -18,16 +18,36 @@ class PanierController extends Controller {
     }
 
     public function addPanierAction($get) {
+        
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
             $_SESSION['panier'][$get['idPlat']] = array();
         }
+        
         $_SESSION['panier'][$get['idPlat']]['plat'] = Plat::findById($get['idPlat']);
+        
         if (!isset($_SESSION['panier'][$get['idPlat']]['nbre']))
             $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
         else
             $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] + $get['qte'];
 
+        if (isset($_SESSION['panier'])) {
+            $res = array();
+            $_SESSION['total'] = 0;
+            foreach ($_SESSION['panier'] as $idplat => $ligne) {
+                $res[$idplat] = array();
+                $res[$idplat]['total'] = $ligne['plat']->prix * $_SESSION['panier'][$idplat]['nbre'];
+                $_SESSION['total'] = $_SESSION['total'] +  $res[$idplat]['total'];
+            }
+            /*if (!isset($_SESSION['total'])) {
+                $_SESSION['total'] = 0;
+            }
+            else {
+                $_SESSION['total'] = $_SESSION['total'] + 1;
+            }*/
+            
+        }
+        
         include ('html/header.html');
         echo "<div id=\"divaff\"><p id=\"paff\"> " . htmlspecialchars("Plat ajouté au panier avec succès !") . "<br/><br/>";
         echo "Redirection dans 3 secondes, <br/><a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
@@ -77,6 +97,22 @@ class PanierController extends Controller {
             header('Refresh: 3; url=panier.php?a=getPanier');
             include ('html/footer.html');
         }*/
+        if (isset($_SESSION['panier'])) {
+            $res = array();
+            $_SESSION['total'] = 0;
+            foreach ($_SESSION['panier'] as $idplat => $ligne) {
+                $res[$idplat] = array();
+                $res[$idplat]['total'] = $ligne['plat']->prix * $_SESSION['panier'][$idplat]['nbre'];
+                $_SESSION['total'] = $_SESSION['total'] +  $res[$idplat]['total'];
+            }
+            /*if (!isset($_SESSION['total'])) {
+                $_SESSION['total'] = 0;
+            }
+            else {
+                $_SESSION['total'] = $_SESSION['total'] + 1;
+            }*/
+            
+        }
     }
 
     public function resetPanierAction() {
