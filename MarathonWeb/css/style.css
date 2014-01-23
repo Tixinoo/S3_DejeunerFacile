@@ -30,8 +30,10 @@ body {
 
 .dimage, .dcaract
 {
+    max-width: 35%;
     display: inline-block;
     vertical-align: top;
+    
 }
 
 #accueil h1 {
@@ -47,6 +49,16 @@ body {
 .dimage , .ptitre{
     width: 500px;
     margin: auto;
+}
+
+.dimage {
+    padding-left: 3%;
+    border-right: 1px solid black;
+}
+
+.ptitre {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .contenu {
     display: inline-block;
