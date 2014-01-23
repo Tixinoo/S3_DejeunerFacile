@@ -16,7 +16,7 @@ class Vue {
         $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a> > <a href="' . $r->getUrl() . '" > ' . $r->nom . '</a> > <a href="' . $this->obj->getUrl() . '" > ' . $this->obj->nom . '</a>';
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
-        echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/originales/' . $this->obj->photo . '" alt="" class="imagelimitee" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li></ul></div></div>';
+        echo '<div id="dplat"><div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/originales/' . $this->obj->photo . '" alt="" class="imagelimitee" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">(Cliquez pour agrandir)</a></figcaption></figure></div><div class="dcaract"><ul><li>Thème : ' . $t->nom . '</li><li>Restaurant : ' . $r->nom . ' </li><li>Prix : ' . $this->obj->prix . '</li></ul></div></div>';
         echo '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $this->obj->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
         include 'html/footer.html';
     }
@@ -110,7 +110,7 @@ class Vue {
         include 'html/header.html';
         if(isset($_SESSION['arianne'])) echo $_SESSION['arianne'];
         $panier = $this->obj;
-        $res = '<div id=panier><table><tr class="headerrow"><td>Thème</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
+        $res = '<h3>Récapitulatif de votre commande : </h3><div id=panier><table><tr class="headerrow"><td>Thème</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
             $resto = Restaurant::findByNom($p['restaurant']);
             $tabplat = Plat::findByResto($resto->id);
@@ -124,7 +124,7 @@ class Vue {
             $montant_total = $montant_total + $p['nbre'] * $p['total'];
         }
         $res = $res . '<tr><td colspan="5"><p align="right"><b>Montant Total</b></p></td><td colspan="2"><p align="left"><b>' . $montant_total . '€</b></p></td></tr>';
-        $res = $res . '</table></div><br/><a href="index.php">Retour à l\'accueil</a>';
+        $res = $res . '</table></div><br/><br/><a href="index.php">Retour à l\'accueil</a>';
         echo $res;
         include 'html/footer.html';
     }
