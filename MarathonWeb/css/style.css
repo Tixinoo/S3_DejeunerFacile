@@ -35,9 +35,9 @@ body {
     width: 45%;
     
     background-color: #99ff99;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin-top: 20px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     padding-left: 5%;
     padding-right: 3%;
     margin-left: 5%;
@@ -98,12 +98,12 @@ table
     background-color: aliceblue;
 }
 
-#titre h1
+#titre h1,h3
 {
     text-align: center;
 }
 
-#titre h3
+#lienpanier
 {
     text-align: right;
 }
