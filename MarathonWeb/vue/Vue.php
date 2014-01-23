@@ -61,10 +61,8 @@ class Vue {
         return $res;  
     }
     
-    public function vue_panier() {
+    public function vue_panier($panier) {
         $res = '<div id=panier>\n<table><tr><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td></tr>';
-        
-        $panier = Panier::getDetailPanier();
         foreach ($panier as $p) {
             $res = $res . '<tr><td>'. $p->type .'</td><td>'. $p->restaurant .'</td><td>'. $p->plat .'</td><td>'. $p->nbre .'</td><td>'. $p->pu .'</td><td>'. $p->total .'</td></tr>';
         }
