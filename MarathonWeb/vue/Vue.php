@@ -10,9 +10,9 @@ class Vue {
     
     public function afficherplat() {
         include 'html/header.html';
-        echo "<p><h1>" . $this->obj->nom . "</h1></p>";
+        echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
         
-        echo "<div class=\"dimage\"><img src=\"others/images/petites/" . $this->obj->photo . "\" alt=\"\" /></div>";
+        echo '<div class="dimage"><figure><a href="others/images/originales/' . $this->obj->photo . '" target="_blank"><img src="others/images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="others/images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
         include 'html/footer.html';
     }
     
@@ -72,7 +72,8 @@ class Vue {
     
     public function vue_plat($plat) {
         $res = "<div class=\"contenu\">\n";
-        $res = $res . "<h1>" . $plat->nom . "</h1>";
+        $id = $plat->id;
+        $res = $res . "<h1><a href=\"index.php?a=affPlat&idplat=$id\">" . $plat->nom . "</a></h1>";
 
         $res = $res . "<p class=catdescription>" . $plat->description . "</p>";
         $res = $res . '<p class="lienpanier"><a href="panier.php?a=addPanier&idPlat=' . $plat->id . '&qte=' . 1 . '">Ajouter au panier</a></p></br>';
