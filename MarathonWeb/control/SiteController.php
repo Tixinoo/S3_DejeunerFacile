@@ -10,13 +10,13 @@ class SiteController extends Controller {
 
     public function __construct() {
         $this->tab_action = array(
-                    'listTheme'=>'listThemeAction',
-                    'listResto'=>'listRestoAction',
-                    'listPlat' =>'listPlatAction',
-                    'default'=>'defaultAction'
-                    );
+            'listTheme' => 'listThemeAction',
+            'listResto' => 'listRestoAction',
+            'listPlat' => 'listPlatAction',
+            'default' => 'defaultAction'
+        );
     }
-    
+
     public function defaultAction() {
         $themes = Theme::findAll();
         $vue = new Vue($themes);
@@ -28,19 +28,19 @@ class SiteController extends Controller {
         $vue = new Vue($themes);
         $vue->vue_all_theme();
     }
-    
+
     public function listRestoAction($get) {
         $idtheme = $get['id'];
         $restos = Restaurant::findByTheme($idtheme);
         $vue = new Vue($restos);
-        $vue->vue_all_resto($restos); 
+        $vue->vue_all_resto($restos);
     }
-    
+
     public function listPlatAction($get) {
         $idresto = $get['id'];
         $plats = Plat::findByResto($idresto);
         $vue = new Vue($plats);
         $vue->vue_all_plat($plats);
     }
-    
+
 }
