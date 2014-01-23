@@ -32,12 +32,12 @@ class Theme
         try
         {
             $db = Base::getConnection();
-            $query = "INSERT INTO Theme (nom,description) VALUES ('?','?')";
+            $query = "INSERT INTO theme (nom,description) VALUES ('?','?')";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
             $nbl = $statement->execute();
-            $this->id = $db->lastInsertId('Theme');
+            $this->id = $db->lastInsertId('theme');
             return $nbl;
         }
         catch (Exception $e)
@@ -57,7 +57,7 @@ class Theme
             }
             
             $db = Base::getConnection();
-            $query = "UPDATE Theme SET nom = ? , description = ? WHERE id = ?";
+            $query = "UPDATE theme SET nom = ? , description = ? WHERE id = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
@@ -79,7 +79,7 @@ class Theme
             try
             {
                 $db = Base::getConnection();
-                $query = "DELETE FROM Theme WHERE id = ?";
+                $query = "DELETE FROM theme WHERE id = ?";
                 $statement = $db->prepare($query);
                 $statement->bindParam(1,$this->id);
                 $nbl = $statement->execute();
@@ -98,7 +98,7 @@ class Theme
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Theme WHERE id = ?";
+            $query = "SELECT * FROM theme WHERE id = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$id);
             $dbres = $statement->execute();
@@ -121,7 +121,7 @@ class Theme
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Theme WHERE nom = ?";
+            $query = "SELECT * FROM theme WHERE nom = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$nom);
             $dbres = $statement->execute();
@@ -144,7 +144,7 @@ class Theme
         try 
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Theme";
+            $query = "SELECT * FROM theme";
             $statement = $db->prepare($query);
             $dbres = $statement->execute();
             $tab = array();
