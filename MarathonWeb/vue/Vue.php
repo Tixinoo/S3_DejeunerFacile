@@ -110,22 +110,26 @@ class Vue {
         include 'html/header.html';
         if(isset($_SESSION['arianne'])) echo $_SESSION['arianne'];
         $panier = $this->obj;
-        $res = '<h3>Récapitulatif de votre commande : </h3><div id=panier><table><tr class="headerrow"><td>Thème</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
-        foreach ($panier as $p) {
-            $resto = Restaurant::findByNom($p['restaurant']);
-            $tabplat = Plat::findByResto($resto->id);
-            $idplat = 0;
-            foreach($tabplat as $pl) {
-                if ($pl->nom == $p['plat'])
-                    $idplat = $pl->id;
+        if (sizeof($panier)!=0) {
+            $res = '<h3>Récapitulatif de votre commande : </h3><div id=panier><table><tr class="headerrow"><td>Thème</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
+            foreach ($panier as $p) {
+                $resto = Restaurant::findByNom($p['restaurant']);
+                $tabplat = Plat::findByResto($resto->id);
+                $idplat = 0;
+                foreach($tabplat as $pl) {
+                    if ($pl->nom == $p['plat'])
+                        $idplat = $pl->id;
+                }
+                $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'x</td><td>'. $p['pu'] .'€</td><td>'. $p['total'] .'€</td><td><a href="panier.php?a=suppPanier&idPlat='.
+                $idplat . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+                $montant_total = $montant_total + $p['nbre'] * $p['total'];
             }
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'x</td><td>'. $p['pu'] .'€</td><td>'. $p['total'] .'€</td><td><a href="panier.php?a=suppPanier&idPlat='.
-            $idplat . '">Supprimer parce que c\'est pas bon</a></td></tr>';
-            $montant_total = $montant_total + $p['nbre'] * $p['total'];
+            $res = $res . '<tr><td colspan="5"><p align="right"><b>Montant Total</b></p></td><td colspan="2"><p align="left"><b>' . $montant_total . '€</b></p></td></tr>';
+            $res = $res . '</table></div><br/><br/><a href="index.php">Retour à l\'accueil</a>';
+            echo $res;
         }
-        $res = $res . '<tr><td colspan="5"><p align="right"><b>Montant Total</b></p></td><td colspan="2"><p align="left"><b>' . $montant_total . '€</b></p></td></tr>';
-        $res = $res . '</table></div><br/><br/><a href="index.php">Retour à l\'accueil</a>';
-        echo $res;
+        else
+            echo '<h3>Vous n\'avez rien commandé !<br/>Même pas une petite faim ?</h3>';
         include 'html/footer.html';
     }
 
