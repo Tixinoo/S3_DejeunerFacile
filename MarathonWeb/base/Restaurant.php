@@ -35,7 +35,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "INSERT INTO restaurant ($nom,$description,$adresse,$contact,$id_theme) VALUES ('?','?','?','?','?')";
+            $query = "INSERT INTO restaurant (nom,description,adresse,contact,id_theme) VALUES (?,?,?,?,?)";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
