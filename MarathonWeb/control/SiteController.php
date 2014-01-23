@@ -30,15 +30,24 @@ class SiteController extends Controller {
     }
 
     public function listRestoAction($get) {
-        $idtheme = $get['idtheme'];
-        $restos = Restaurant::findByTheme($idtheme);
+        if (isset($get['idtheme'])) {
+            $idtheme = $get['idtheme'];
+            $restos = Restaurant::findByTheme($idtheme);
+        } else {
+            $restos = Restaurant::findAll();
+        }
         $vue = new Vue($restos);
         $vue->vue_all_resto($restos);
     }
 
     public function listPlatAction($get) {
-        $idresto = $get['idresto'];
-        $plats = Plat::findByResto($idresto);
+        if (isset($get['idresto'])) {
+            $idresto = $get['idresto'];
+            $plats = Plat::findByResto($idresto);
+        } else {
+            $plats = Plat::findAll();
+        }
+
         $vue = new Vue($plats);
         $vue->vue_all_plat($plats);
     }
