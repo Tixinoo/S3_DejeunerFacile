@@ -3,22 +3,43 @@ body {
     width: 80%;
     margin: auto;
     font-family: Lustria, Arial;
+    background-color: #e9ffe9;
+}
+
+.foot
+{
+    font-size: 1em;
+    font-style: italic;
+    font-family: Lustria, Arial;
 }
 
 #accueil {
-    border: 2px gray double;
-    background-color: lightgray;
+    /*border: 2px gray double;*/
+    /*background-color: lightblue;*/
     width: 50%;
     margin: auto;
+    box-shadow: #ffcc99 5px 5px 4px;
+    background-color: white;
+}
+
+#dplat
+{
+    width: 70%;
+}
+
+#dimage, #dcaract
+{
+    display: inline-block;
+    vertical-align: top;
 }
 
 #accueil h1 {
-    color: red;
+    color: lightseagreen;
     text-align: center;
 }
 
 .paccueil {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-left: 15%;
 }
 
