@@ -30,14 +30,14 @@ class SiteController extends Controller {
     }
 
     public function listRestoAction($get) {
-        $idtheme = $get['id'];
+        $idtheme = $get['idtheme'];
         $restos = Restaurant::findByTheme($idtheme);
         $vue = new Vue($restos);
         $vue->vue_all_resto($restos);
     }
 
     public function listPlatAction($get) {
-        $idresto = $get['id'];
+        $idresto = $get['idresto'];
         $plats = Plat::findByResto($idresto);
         $vue = new Vue($plats);
         $vue->vue_all_plat($plats);
