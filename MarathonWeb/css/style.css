@@ -72,7 +72,7 @@ body {
     border: 0;
     padding: 0;
     display: inline-block;
-    background-color: aliceblue;
+    background-color: blue;
     text-align: center;
 }
 
@@ -95,5 +95,6 @@ table
 {
     border-collapse: collapse;
     display: inline-block;
+    background-color: aliceblue;
 }
 
