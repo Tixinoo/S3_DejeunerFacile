@@ -58,4 +58,5 @@ class Vue {
         $res = $res . "</div>";
         return $res;  
     }
+    
 }
