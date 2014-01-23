@@ -244,7 +244,7 @@ class Restaurant
     }
     
     public static function getUrl() {
-        $res = "index.php?a=listPlat&idresto=" . $this->id;
+        
     }
 
 }
