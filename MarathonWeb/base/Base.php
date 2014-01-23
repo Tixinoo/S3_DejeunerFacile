@@ -17,8 +17,8 @@ class Base {
             $ini_array = parse_ini_file("configbdd.ini");
             $dsn= $ini_array['driver'] . ":host=" . $ini_array['host'] . ";dbname=" . $ini_array['dbname'];
             $bdd = new PDO($dsn, $ini_array['user'], $ini_array['pass']);
-            
-            mysql_query("SET NAMES UTF8"); 
+           
+            $bdd->exec("SET CHARACTER SET utf8");
             return $bdd;
         } catch (Exception $e) {
             throw new BaseException("connection: $dsn ".$e->getMessage(). '<br/>');
