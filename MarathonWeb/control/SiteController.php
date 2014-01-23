@@ -53,6 +53,7 @@ class SiteController extends Controller {
     }
 
     public function listPlatAction($get) {
+        $idresto = 0;
         if (isset($get['idresto'])) {
             $idresto = $get['idresto'];
             $plats = Plat::findByResto($idresto);
@@ -61,7 +62,7 @@ class SiteController extends Controller {
         }
 
         $vue = new Vue($plats);
-        $vue->vue_all_plat($plats);
+        $vue->vue_all_plat($idresto);
     }
 
 }
