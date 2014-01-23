@@ -1,7 +1,8 @@
 <?php
 
-include 'SiteController.php';
+include_once 'SiteController.php';
 
+session_start();
 $c = new SiteController();
 
 if (isset($_GET['a']))
