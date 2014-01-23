@@ -1,5 +1,7 @@
 <?php
 
+include_once 'base/Vue.php';
+
 class Vue {
 
     private $obj;
@@ -59,4 +61,14 @@ class Vue {
         return $res;  
     }
     
+    public function vue_panier() {
+        $res = '<div id=panier>\n<table><tr><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td></tr>';
+        
+        $panier = Panier::getDetailPanier();
+        /*foreach ($panier as ) {
+            
+        }*/
+        $res = $res . '</table>';
+        return $res;
+    }
 }
