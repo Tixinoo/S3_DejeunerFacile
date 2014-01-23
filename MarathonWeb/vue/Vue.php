@@ -28,7 +28,7 @@ class Vue {
     public function vue_all_resto() {
         include 'html/header.html';
         foreach($this->obj as $r) {
-            vue_resto($r);
+            echo $this->vue_resto($r);
         }
         include 'html/footer.html';
     }
@@ -37,7 +37,7 @@ class Vue {
         $res = "<div id=\"contenu\">\n";
         $res = $res . "<h1>" . $resto->id . " : " . $resto->nom . "</h1>";
 
-        $res = $res . "<p id=catdescription>" . $theme->description . "</p>";
+        $res = $res . "<p id=catdescription>" . $resto->description . "</p>";
         $res = $res . "</div>";
         return $res;  
     }
@@ -45,7 +45,7 @@ class Vue {
     public function vue_all_plat() {
         include 'html/header.html';
         foreach($this->obj as $p) {
-            vue_plat($p);
+            echo $this->vue_plat($p);
         }
         include 'html/footer.html';
     }
