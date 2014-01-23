@@ -5,7 +5,7 @@ class PanierController extends Controller {
     public function __construct() {
         $this->tab_action = array(
             'addPanier' => 'addPanierAction',
-            'affPanier' => 'affPanierAction',
+            'getPanier' => 'getPanierAction',
             'resetPanier' => 'resetPanierAction'
         );
     }
@@ -19,7 +19,7 @@ class PanierController extends Controller {
         $_SESSION['panier'][$plat->id]['nbre'] = $nb;
     }
 
-    public function affPanier() {
+    public function getPanier() {
         $res = NULL;
         if (isset($_SESSION['panier'])) {
             $res = array();
