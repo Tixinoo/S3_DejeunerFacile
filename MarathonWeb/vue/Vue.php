@@ -52,7 +52,7 @@ class Vue {
     public function vue_all_resto($idtheme) {
         include 'html/header.html';
         $t = Theme::findById($idtheme);
-        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a><br/>';
+        echo '<a href="' . $t->getUrl() . '" > ' . $t->nom . '</a><br/>';
         echo "<h2>Voici les restaurants correspondants au thème : " . $t->nom . "</h2>";
         $_SESSION['arianne'] = '<a href="' . $t->getUrl() . '">' . $t->nom . '</a><br/>';
         foreach ($this->obj as $r) {
