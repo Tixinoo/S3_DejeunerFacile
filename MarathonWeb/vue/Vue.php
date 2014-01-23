@@ -63,9 +63,13 @@ class Vue {
         return $res;
     }
 
-    public function vue_all_plat() {
+    public function vue_all_plat($idresto) {
         include 'html/header.html';
-        $plat = $this->obj;
+        $r = Restaurant::findById($idresto);
+        $t = Theme::findById($r->id_theme);
+
+        echo '<a href="' . $t->getUrl() . '">' . $t->nom . '</a> > <a href="' . $r->getUrl() . '">' . $r->nom . '</a> ><br/>';
+
         foreach ($this->obj as $p) {
             echo $this->vue_plat($p);
         }
@@ -89,7 +93,7 @@ class Vue {
         $res = '<div id=panier><table><tr class="headerrow"><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
             var_dump($p);
-            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td><td><a href="panier.php?a=suppPanier&idPlat='. 0 . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+            $res = $res . '<tr><td>' . $p['type'] . '</td><td>' . $p['plat'] . '</td><td>' . $p['restaurant'] . '</td><td>' . $p['nbre'] . '</td><td>' . $p['pu'] . '</td><td>' . $p['total'] . '</td><td><a href="panier.php?a=suppPanier&idPlat=' . 0 . '">Supprimer parce que c\'est pas bon</a></td></tr>';
         }
         $res = $res . '</table></div><br/><a href="index.php">Retour à l\'accueil</a>';
         echo $res;
