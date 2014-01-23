@@ -7,6 +7,15 @@ class Vue {
     public function __construct($param) {
         $this->obj = $param;
     }
+    
+    public function vuedefault() {
+        include 'html/header.html';
+        include ('html/accueil.html');
+        foreach($this->obj as $t) {
+            echo $this->vue_theme($t);
+        }
+        include 'html/footer.html';
+    }
 
     public function vue_all_theme() {
         include 'html/header.html';
