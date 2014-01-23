@@ -32,7 +32,7 @@ class Theme
         try
         {
             $db = Base::getConnection();
-            $query = "INSERT INTO Theme ($nom,$description) VALUES ('?','?')";
+            $query = "INSERT INTO Theme (nom,description) VALUES ('?','?')";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
