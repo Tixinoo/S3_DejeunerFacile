@@ -58,7 +58,7 @@ class SiteController extends Controller {
 
     public function getDetailPanier() {
         $res = NULL;
-        if (!isset($_SESSION['panier'])) {
+        if (isset($_SESSION['panier'])) {
             $res = array();
             $res['type'] = array();
             $res['restaurant'] = array();
