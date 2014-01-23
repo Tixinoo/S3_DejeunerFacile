@@ -7,7 +7,7 @@ include_once 'base/Restaurant.php';
 include_once 'vue/Vue.php';
 
 class PanierController extends Controller {
-    
+
     public function __construct() {
         $this->tab_action = array(
             'addPanier' => 'addPanierAction',
@@ -16,7 +16,7 @@ class PanierController extends Controller {
             'suppPanier' => 'suppPanierAction'
         );
     }
-    
+
     public function addPanierAction($get) {
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
@@ -24,13 +24,13 @@ class PanierController extends Controller {
         }
         $_SESSION['panier'][$get['idPlat']]['plat'] = Plat::findById($get['idPlat']);
         if (!isset($_SESSION['panier'][$get['idPlat']]['nbre']))
-                $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
+            $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
         else
-                $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] + $get['qte'];
-  
+            $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] + $get['qte'];
+
         include ('html/header.html');
         echo "<div id=\"divaff\"><p id=\"paff\"> " . htmlspecialchars("Plat ajouté au panier avec succès !") . "<br/><br/>";
-        echo "Redirection dans 3 secondes, <a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
+        echo "Redirection dans 3 secondes, <br/><a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
         echo "</p></div>";
         header('Refresh: 3; url=panier.php?a=getPanier');
         include ('html/footer.html');
@@ -53,10 +53,17 @@ class PanierController extends Controller {
         $vue = new Vue($res);
         $vue->vue_panier();
     }
-    
+
     public function suppPanierAction($get) {
         if (isset($_SESSION['panier'][$get['idPlat']])) {
             unset($_SESSION['panier'][$get['idPlat']]);
+
+            include ('html/header.html');
+            echo "<div id=\"divaff\"><p id=\"paff\"> " . htmlspecialchars("Plat ajouté au panier avec succès !") . "<br/><br/>";
+            echo "Redirection dans 3 secondes, <br/><a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
+            echo "</p></div>";
+            header('Refresh: 3; url=panier.php?a=getPanier');
+            include ('html/footer.html');
         }
     }
 
@@ -64,4 +71,5 @@ class PanierController extends Controller {
         session_destroy();
         session_start();
     }
+
 }
