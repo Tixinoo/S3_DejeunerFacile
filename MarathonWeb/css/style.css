@@ -4,6 +4,23 @@ body {
     margin: auto;
 }
 
+#accueil {
+    border: 2px gray double;
+    background-color: lightgray;
+    width: 50%;
+    margin: auto;
+}
+
+#accueil h1 {
+    color: red;
+    text-align: center;
+}
+
+.paccueil {
+    font-size: 1.2em;
+    margin-left: 15%;
+}
+
 .contenu {
     display: inline-block;
     vertical-align: top;
