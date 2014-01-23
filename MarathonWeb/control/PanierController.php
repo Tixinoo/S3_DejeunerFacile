@@ -1,7 +1,9 @@
 <?php
 
-include_once '../base/Plat.php';
-include_once '../vue/Vue.php';
+include_once 'Controller.php';
+include_once 'base/Theme.php';
+include_once 'base/Plat.php';
+include_once 'vue/Vue.php';
 
 class PanierController extends Controller {
     
@@ -13,20 +15,20 @@ class PanierController extends Controller {
         );
     }
     
-    public function addPanier($get) {
+    public function addPanierAction($get) {
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array();
-            $_SESSION['panier'][$plat->id] = array();
+            $_SESSION['panier'][$get['idPlat']] = array();
         }
-        $_SESSION['panier'][$plat->id]['plat'] = Plat::findById($get['idPlat']);
-        $_SESSION['panier'][$plat->id]['nbre'] = $get['qte'];
+        $_SESSION['panier'][$get['idPlat']]['plat'] = Plat::findById($get['idPlat']);
+        $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
     }
 
-    public function getPanier() {
+    public function getPanierAction() {
         $res = NULL;
         if (isset($_SESSION['panier'])) {
             $res = array();
-            foreach ($_SESSION['panier']['plat'] as $plat) {
+            foreach ($_SESSION['panier'][$plat->id] as $plat) {
                 $res[$plat->id] = array();
                 $res[$plat->id]['type'] = Theme::findById(Restaurant::findById($plat->id_resto)->id_theme)->nom;
                 $res[$plat->id]['restaurant'] = Restaurant::findById($plat->id_resto)->nom;
@@ -40,7 +42,7 @@ class PanierController extends Controller {
         $vue->vue_panier();
     }
 
-    public function resetPanier() {
+    public function resetPanierAction() {
         session_destroy();
         session_start();
     }
