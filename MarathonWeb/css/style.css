@@ -90,14 +90,16 @@ body {
 .lienpanier a {
     padding-left: 10px;
     padding-right: 10px;
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: #669900;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .lienpanier a:hover {
-    font-weight: bold;
+    /*font-weight: bold;*/
     background-color: white;
-    color: green;
+    color: #009933;
 }
 
 #panier
@@ -175,6 +177,7 @@ a:hover
 .titretheme
 {
     font-family: Yeseva One;
+    font-size: 1.8em;
 }
 
 .catdescription
