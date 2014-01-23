@@ -12,7 +12,8 @@ class PanierController extends Controller {
         $this->tab_action = array(
             'addPanier' => 'addPanierAction',
             'getPanier' => 'getPanierAction',
-            'resetPanier' => 'resetPanierAction'
+            'resetPanier' => 'resetPanierAction',
+            'suppPanier' => 'suppPanierAction'
         );
     }
     
@@ -41,6 +42,12 @@ class PanierController extends Controller {
         }
         $vue = new Vue($res);
         $vue->vue_panier();
+    }
+    
+    public function suppPanierAction($get) {
+        if (isset($_SESSION['panier'][$get['idPlat']])) {
+            unset($_SESSION['panier'][$get['idPlat']]);
+        }
     }
 
     public function resetPanierAction() {
