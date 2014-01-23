@@ -70,6 +70,6 @@ class Vue {
             $res = $res . '<tr><td>'. $p->type .'</td><td>'. $p->restaurant .'</td><td>'. $p->plat .'</td><td>'. $p->nbre .'</td><td>'. $p->pu .'</td><td>'. $p->total .'</td></tr>';
         }
         $res = $res . '</table></div>';
-        return $res;
+        echo $res;
     }
 }
