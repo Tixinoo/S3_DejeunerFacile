@@ -44,7 +44,7 @@ class Vue {
         $id = $theme->id;
         $res = $res . "<h1 class=\"titretheme\"><a href=\"index.php?a=listResto&idtheme=$id\">" . $theme->nom . "</a></h1>";
 
-        $res = $res . "<p class=catdescription>" . $theme->description . "</p>";
+        $res = $res . "<p class=catdescription>" . htmlspecialchars($theme->description) . "</p>";
         $res = $res . "</div>";
         return $res;
     }

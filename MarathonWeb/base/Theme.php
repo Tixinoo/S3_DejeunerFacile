@@ -141,6 +141,7 @@ class Theme
         try 
         {
             $db = Base::getConnection();
+            $db->exec("SET CHARACTER SET utf8");
             $query = "SELECT * FROM theme";
             $statement = $db->prepare($query);
             $dbres = $statement->execute();
