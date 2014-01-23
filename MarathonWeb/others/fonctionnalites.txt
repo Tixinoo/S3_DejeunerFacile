@@ -1,0 +1,6 @@
+Fonctionnalités de base attendues :
+	- Affichage de la liste des thèmes (n°1)
+	- Affichage de la liste des restaurants pour un thème (n°2)
+	- Affichage de la carte d'un restaurant (n°4)
+	- Ajout de plats dans un panier (n°8)
+	- Affichage du panier (n°11)
