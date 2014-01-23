@@ -32,13 +32,10 @@ class Theme
         try
         {
             $db = Base::getConnection();
-            $query = "INSERT INTO theme (nom,description) VALUES ('?','?')";
-            $statement = $db->prepare($query);
-            $statement->bindParam(1,$this->nom);
-            $statement->bindParam(2,$this->description);
-            $nbl = $statement->execute();
+            $query = $db->prepare("INSERT INTO theme (nom,description) VALUES (?,?)");
+
+            $query->execute(array($this->nom, $this->description));
             $this->id = $db->lastInsertId('theme');
-            return $nbl;
         }
         catch (Exception $e)
         {
@@ -93,7 +90,7 @@ class Theme
         }
     }
     
-    public function findById($id)
+    public static function findById($id)
     {
         try
         {
@@ -116,7 +113,7 @@ class Theme
         }
     }
     
-    public function findByNom($nom)
+    public static function findByNom($nom)
     {
         try
         {
@@ -139,7 +136,7 @@ class Theme
         }
     }
     
-    public function findAll()
+    public static function findAll()
     {
         try 
         {
