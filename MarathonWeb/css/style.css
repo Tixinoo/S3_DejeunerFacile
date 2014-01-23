@@ -2,6 +2,7 @@
 body {
     width: 80%;
     margin: auto;
+    font-family: Lustria, Arial;
 }
 
 #accueil {
@@ -101,7 +102,12 @@ table
 #titre h1,h3
 {
     text-align: center;
-    font-family: Yeseva One;
+    font-family: Yeseva One, Arial;
+}
+
+#titre h1
+{
+    font-size: 3em;
 }
 
 #lienpanier
@@ -119,4 +125,25 @@ table
 {
     text-align: center;
     font-size: 2em;
+}
+
+a
+{
+    text-decoration: none;
+    color: darkgreen;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+.titretheme
+{
+    font-family: Yeseva One;
+}
+
+.catdescription
+{
+    font-style: italic;
 }
