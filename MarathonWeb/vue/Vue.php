@@ -12,7 +12,7 @@ class Vue {
         include 'html/header.html';
         echo "<h1 class=\"ptitre\">" . $this->obj->nom . "</h1>";
 
-        echo '<div class="dimage"><figure><a href="others/images/originales/' . $this->obj->photo . '" target="_blank"><img src="others/images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="others/images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
+        echo '<div class="dimage"><figure><a href="images/originales/' . $this->obj->photo . '" target="_blank"><img src="images/petites/' . $this->obj->photo . '" alt="" /></a><figcaption><a href="images/originales/' . $this->obj->photo . '" target="_blank">Cliquez ici ou sur l\'image pour voir l\'image originale (plus grand)</a></figcaption></figure></div>';
         include 'html/footer.html';
     }
 
@@ -92,8 +92,9 @@ class Vue {
         $panier = $this->obj;
         $res = '<div id=panier><table><tr class="headerrow"><td>Theme</td><td>Plat</td><td>Restaurant</td><td>Quantité</td><td>P.U.</td><td>Total</td><td>Supprimer</td></tr>';
         foreach ($panier as $p) {
-            var_dump($p);
-            $res = $res . '<tr><td>' . $p['type'] . '</td><td>' . $p['plat'] . '</td><td>' . $p['restaurant'] . '</td><td>' . $p['nbre'] . '</td><td>' . $p['pu'] . '</td><td>' . $p['total'] . '</td><td><a href="panier.php?a=suppPanier&idPlat=' . 0 . '">Supprimer parce que c\'est pas bon</a></td></tr>';
+            $resto = Restaurant::findByNom($p['restaurant']);
+            $plat = Plat::findByResto($resto->id);
+            $res = $res . '<tr><td>'. $p['type'] .'</td><td>'. $p['plat'] .'</td><td>'. $p['restaurant'] .'</td><td>'. $p['nbre'] .'</td><td>'. $p['pu'] .'</td><td>'. $p['total'] .'</td><td><a href="panier.php?a=suppPanier&idPlat='. $plat->id . '">Supprimer parce que c\'est pas bon</a></td></tr>';
         }
         $res = $res . '</table></div><br/><a href="index.php">Retour à l\'accueil</a>';
         echo $res;
