@@ -1,6 +1,7 @@
 <?php
 
 include_once '../base/Plat.php';
+include_once '../vue/Vue.php';
 
 class PanierController extends Controller {
     
@@ -35,7 +36,8 @@ class PanierController extends Controller {
                 $res[$plat->id]['total'] = $plat->prix * $_SESSION['panier']['nbre'][$plat->id];
             }
         }
-        return $res;
+        $vue = new Vue($res);
+        $vue->vue_panier();
     }
 
     public function resetPanier() {
