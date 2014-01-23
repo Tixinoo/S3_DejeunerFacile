@@ -35,7 +35,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "INSERT INTO Restaurant ($nom,$description,$adresse,$contact,$id_theme) VALUES ('?','?','?','?','?')";
+            $query = "INSERT INTO restaurant ($nom,$description,$adresse,$contact,$id_theme) VALUES ('?','?','?','?','?')";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
@@ -43,7 +43,7 @@ class Restaurant
             $statement->bindParam(4,$this->contact);
             $statement->bindParam(5,$this->id_theme);
             $nbl = $statement->execute();
-            $this->id = $db->lastInsertId('Restaurant');
+            $this->id = $db->lastInsertId('restaurant');
             return $nbl;
         }
         catch (Exception $e)
@@ -63,7 +63,7 @@ class Restaurant
             }
             
             $db = Base::getConnection();
-            $query = "UPDATE Restaurant SET nom = ? , description = ? , adresse = ? , contact = ? , id_theme = ? WHERE id = ?";
+            $query = "UPDATE restaurant SET nom = ? , description = ? , adresse = ? , contact = ? , id_theme = ? WHERE id = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$this->nom);
             $statement->bindParam(2,$this->description);
@@ -88,7 +88,7 @@ class Restaurant
             try
             {
                 $db = Base::getConnection();
-                $query = "DELETE FROM Restaurant WHERE id = ?";
+                $query = "DELETE FROM restaurant WHERE id = ?";
                 $statement = $db->prepare($query);
                 $statement->bindParam(1,$this->id);
                 $nbl = $statement->execute();
@@ -107,7 +107,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Restaurant WHERE id = ?";
+            $query = "SELECT * FROM restaurant WHERE id = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$id);
             $dbres = $statement->execute();
@@ -133,7 +133,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Restaurant WHERE nom = ?";
+            $query = "SELECT * FROM restaurant WHERE nom = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$nom);
             $dbres = $statement->execute();
@@ -159,7 +159,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Restaurant WHERE adresse = ?";
+            $query = "SELECT * FROM restaurant WHERE adresse = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$adresse);
             $dbres = $statement->execute();
@@ -189,7 +189,7 @@ class Restaurant
         try
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Restaurant WHERE id_theme = ?";
+            $query = "SELECT * FROM restaurant WHERE id_theme = ?";
             $statement = $db->prepare($query);
             $statement->bindParam(1,$id_theme);
             $dbres = $statement->execute();
@@ -219,7 +219,7 @@ class Restaurant
         try 
         {
             $db = Base::getConnection();
-            $query = "SELECT * FROM Restaurant";
+            $query = "SELECT * FROM restaurant";
             $statement = $db->prepare($query);
             $dbres = $statement->execute();
             $tab = array();
