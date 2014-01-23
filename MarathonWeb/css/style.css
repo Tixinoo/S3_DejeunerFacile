@@ -101,9 +101,22 @@ table
 #titre h1,h3
 {
     text-align: center;
+    font-family: Yeseva One;
 }
 
 #lienpanier
 {
     text-align: right;
+}
+
+#divaff
+{
+    width: 50%;
+    margin: auto;
+}
+
+#paff
+{
+    text-align: center;
+    font-size: 2em;
 }
