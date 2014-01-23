@@ -27,6 +27,13 @@ class PanierController extends Controller {
                 $_SESSION['panier'][$get['idPlat']]['nbre'] = $get['qte'];
         else
                 $_SESSION['panier'][$get['idPlat']]['nbre'] = $_SESSION['panier'][$get['idPlat']]['nbre'] + $get['qte'];
+  
+        include ('html/header.html');
+        echo "<div id=\"divaff\"><p id=\"paff\"> " . htmlspecialchars("Plat ajouté au panier avec succès !") . "<br/><br/>";
+        echo "Redirection dans 3 secondes, <a href=\"panier.php?a=getPanier\">-Rediriger maintenant</a>";
+        echo "</p></div>";
+        header('Refresh: 3; url=panier.php?a=getPanier');
+        include ('html/footer.html');
     }
 
     public function getPanierAction() {
